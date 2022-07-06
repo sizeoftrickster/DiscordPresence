@@ -18,6 +18,17 @@ SAMP::PlayerPool::PlayerPool( void* pPlayerPool ) : pPlayerPool( pPlayerPool ) {
 			pLocalPlayerId = reinterpret_cast<short*>( (size_t)pPlayerPool + 0x2F1C );
 			break;
 		}
+		/*
+		case ( sampVersion::R4 ): {
+
+			break;
+		}
+		*/
+		case ( sampVersion::DL ): {
+			pLocalPlayerNickname = reinterpret_cast<void*>( (size_t)pPlayerPool + 0x6 );
+			pLocalPlayerId = reinterpret_cast<short*>( (size_t)pPlayerPool + 0x0 );
+			break;
+		}
 		default: {
 			break;
 		}

@@ -38,6 +38,11 @@ RakHook::RakHook() {
 			pIncomingPackets = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x31CA0 );
 			break;
 		} */
+		case ( SAMP::sampVersion::DL ): {
+			pIncomingRPC = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x3A8A0 );
+			pIncomingPackets = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x317B0 );
+			break;
+		}
 		default: {
 			break;
 		}
@@ -147,7 +152,7 @@ Packet* RakHook::PacketsIncomingHandlerHooked( PacketsIncomingHandlerPrototype f
 	RakNet::BitStream BitStream( Packet->data, BITS_TO_BYTES( Packet->length ), false );
 	
 	unsigned char PacketID = RakHook::readPacketId( BitStream );
-	
+
 	switch ( PacketID ) {
 		// ID_NO_FREE_INCOMING_CONNECTIONS // 
 		case ( 31 ): {

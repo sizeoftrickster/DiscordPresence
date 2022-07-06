@@ -27,7 +27,7 @@ public:
 		std::string Plane = u8"Летит в самолете";
 		std::string Boat = u8"Плывёт на лодке";
 		std::string Train = u8"Едет на поезде";
-		std::string Bike = u8"Едет на велосипеде";
+		std::string Bike = u8"Едет на велосипеде/мотоцикле";
 		std::string BMX = u8"Едет на БМХ";
 	}; // struct ConfigData
 

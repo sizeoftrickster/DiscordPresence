@@ -39,6 +39,10 @@ SAMP::sampVersion SAMP::GetSAMPVersion() {
 				sampVersion = sampVersion::R4;
 				break;
 			}
+			case ( 0xFDB60 ): {
+				sampVersion = sampVersion::DL;
+				break;
+			}
 			default: {
 				sampVersion = sampVersion::unknown;
 				break;

@@ -26,6 +26,7 @@ namespace SAMP
 		const char* GetHostname();
 		const char* GetServerIP();
 		short GetServerPort();
+		char* GetServer();
 
 		class Pools* Pools();
 	}; // class Base

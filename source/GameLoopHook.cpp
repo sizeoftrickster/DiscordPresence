@@ -17,7 +17,7 @@ void GameLoopHook::GameLoopHooked( GameLoopPrototype fpHkOriginal ) {
 		if ( SAMP::Base::isSAMPInitilize() ) {
 			Config::Load();
 			discordPresence_ = std::make_unique<DiscordPresence>();
-			isInitialized = true;
+			isInitialized = true; 
 		}
 	} else {
 		if ( GetTickCount64() - UpdateRate > Config::Get()->UpdateRate ) {

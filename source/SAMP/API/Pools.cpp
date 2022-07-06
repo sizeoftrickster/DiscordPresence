@@ -20,6 +20,10 @@ SAMP::Pools::Pools( void* pPools_ ) : pPools( pPools_ ) {
 			ppPlayer = reinterpret_cast<void**>((size_t)pPools + 0x8);
 			break;
 		} */
+		case ( sampVersion::DL ): {
+			ppPlayer = reinterpret_cast<void**>( (size_t)pPools + 0x8 );
+			break;
+		}
 		default: {
 			break;
 		}

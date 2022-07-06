@@ -25,7 +25,8 @@ DiscordPresence::DiscordPresence() {
 	DiscordEventHandlers eventHandler;
 	memset( &eventHandler, 0, sizeof( eventHandler ) );
 	Discord_Initialize( applicationId.c_str(), &eventHandler, NULL, NULL );
-	rpcHook_ = std::make_unique<RakHook>();
+	
+	RpcHook_ = std::make_unique<RakHook>();
 }
 
 DiscordPresence::~DiscordPresence() {
@@ -36,7 +37,7 @@ void DiscordPresence::Update() {
 	DiscordRichPresence richPresence;
 	memset( &richPresence, 0, sizeof( richPresence ) );
 
-	int serverIndex = GetServerIndex( SAMP::Base::CreateInstance()->GetServerIP() );
+	int serverIndex = GetServerIndex( SAMP::Base::CreateInstance()->GetServer() );
 	auto [weaponIndex, weaponName] = CPed::GetWeaponInfo();
 
 	// Info //
@@ -155,21 +156,23 @@ const char* DiscordPresence::GetPlayerDetails() {
 }
 
 const char* DiscordPresence::GetServerLogo( int serverIndex ) {
-	if ( serverIndex >= 0 && serverIndex <= 20 )
+	if ( serverIndex >= 0 && serverIndex <= 21 )
 		return "arizonarplogo";
-	else if ( serverIndex >= 21 && serverIndex <= 24 )
+	else if ( serverIndex >= 22 && serverIndex <= 25 )
 		return "samprplogo";
-	else if ( serverIndex == 25 || serverIndex == 26 )
+	else if ( serverIndex == 26 || serverIndex == 27 )
 		return "evolverplogo";
-	else if ( serverIndex >= 27 && serverIndex <= 29 )
+	else if ( serverIndex >= 28 && serverIndex <= 30 )
 		return "diamondrplogo";
-	else if ( serverIndex >= 30 && serverIndex <= 33 )
+	else if ( serverIndex >= 31 && serverIndex <= 34 )
 		return "advancerplogo";
-	else if ( serverIndex >= 34 && serverIndex <= 36 )
+	else if ( serverIndex >= 35 && serverIndex <= 37 )
 		return "trinityrplogo";
-	else if ( serverIndex == 37 )
+	else if ( serverIndex >= 38 && serverIndex <= 41 )
+		return "absoluterplogo";
+	else if ( serverIndex == 42 )
 		return "hmslogo";
-	else if ( serverIndex == 38 )
+	else if ( serverIndex == 43 )
 		return "srteamlogo";
 	return "defaultlogo";
 }
@@ -184,73 +187,3 @@ const char* DiscordPresence::GetWeaponLogo( int weaponIndex ) {
 		return WeaponLogo[0].data();
 	return WeaponLogo[weaponIndex].data();
 } 
-
-/*
-const char* Action = Config::Get()->DoesNothing.data();
-	CPed::TransportState VehState = CPed::GetTransportState();
-	RakHook::RPCAction RPCAction = RakHook::GetRPCAction();
-
-	if ( RPCAction != RakHook::RPCAction::DOES_NOTHING ) {
-		switch ( RPCAction ) {
-			case ( RakHook::RPCAction::SHOW_DIALOG ): {
-				Action = Config::Get()->ShowDialog.data();
-				break;
-			}
-			case ( RakHook::RPCAction::SHOW_TEXTDRAW ): {
-				Action = Config::Get()->ShowTextDraw.data();
-				break;
-			}
-			case ( RakHook::RPCAction::SHOW_GAMETEXT ): {
-				Action = Config::Get()->ShowGameText.data();
-				break;
-			}
-		}
-	} else {
-		switch ( VehState ) {
-			case ( CPed::TransportState::UNKNOWN ): {
-
-				CPed::PedState RunningState = CPed::GetPedRunningStatus();
-				if ( RunningState == CPed::PedState::RUNNING )
-					Action = Config::Get()->Running.data();
-
-				break;
-			}
-			case ( CPed::TransportState::AUTOMOBILE ): {
-				Action = Config::Get()->Automobile.data();
-				break;
-			}
-			case ( CPed::TransportState::MTRUCK ): {
-				Action = Config::Get()->MonsterTruck.data();
-				break;
-			}
-			case ( CPed::TransportState::QUAD ): {
-				Action = Config::Get()->Quad.data();
-				break;
-			}
-			case ( CPed::TransportState::HELICOPTER ): {
-				Action = Config::Get()->Helicopter.data();
-				break;
-			}
-			case ( CPed::TransportState::PLANE ): {
-				Action = Config::Get()->Plane.data();
-				break;
-			}
-			case ( CPed::TransportState::BOAT ): {
-				Action = Config::Get()->Boat.data();
-				break;
-			}
-			case ( CPed::TransportState::TRAIN ): {
-				Action = Config::Get()->Train.data();
-				break;
-			}
-			case ( CPed::TransportState::BIKE ): {
-				Action = Config::Get()->Bike.data();
-				break;
-			}
-			case ( CPed::TransportState::BMX ): {
-				Action = Config::Get()->BMX.data();
-				break;
-			}
-		}
-	}
-*/

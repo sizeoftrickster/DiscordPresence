@@ -31,12 +31,20 @@ SAMP::Base::Base() {
 			ofPort = 0x235;
 			break;
 		}
-		case ( sampVersion::R4 ): {
-			/*pSAMP = *reinterpret_cast<void**>(GetSAMPHandle() + 0x26EA0C);
+		/*case (sampVersion::R4): {
+			pSAMP = *reinterpret_cast<void**>(GetSAMPHandle() + 0x26EA0C);
 			ppPools = reinterpret_cast<void**>( (size_t)pSAMP + 0x3DE );
 			ofHostName = 0x131;
 			ofAddress = 0x30;
-			ofPort = 0x235; */
+			ofPort = 0x235;
+			break;
+		} */
+		case ( sampVersion::DL ): {
+			pSAMP = *reinterpret_cast<void**>( GetSAMPHandle() + 0x2ACA24 );
+			ppPools = reinterpret_cast<void**>( (size_t)pSAMP + 0x3DE );
+			ofHostName = 0x131;
+			ofAddress = 0x30;
+			ofPort = 0x235;
 			break;
 		}
 		default: {
@@ -74,6 +82,8 @@ bool SAMP::Base::isSAMPInitilize() {
 		return *reinterpret_cast<void**>( GetSAMPHandle() + 0x26E8DC ) != nullptr;
 	/*else if (GetSAMPVersion() == sampVersion::R4)
 		return *reinterpret_cast<void**>( GetSAMPHandle() + 0x26EA0C ) != nullptr; */
+	else if ( GetSAMPVersion() == sampVersion::DL )
+		return *reinterpret_cast<void**>( GetSAMPHandle() + 0x2ACA24 ) != nullptr;
 	return false;
 }
 
@@ -103,4 +113,10 @@ short SAMP::Base::GetServerPort() {
 	if ( !pSAMP )
 		return -1;
 	return *reinterpret_cast<short*>( (size_t)pSAMP + ofPort );
+}
+
+char* SAMP::Base::GetServer() {
+	char* Buffer = new char[128];
+	sprintf( Buffer, "%s:%d", GetServerIP(), GetServerPort() );
+	return Buffer;
 }
