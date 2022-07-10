@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="GameLoopHook.cpp" />
+    <ClCompile Include="LemonHook\src\details\details.cpp" />
+    <ClCompile Include="LemonHook\src\details\detour_base.cpp" />
+    <ClCompile Include="LemonHook\src\mem.cpp" />
+    <ClCompile Include="DiscordPresence.cpp" />
+    <ClCompile Include="SAMP\API\Base.cpp" />
+    <ClCompile Include="SAMP\API\Library.cpp" />
+    <ClCompile Include="SAMP\API\PlayerPool.cpp" />
+    <ClCompile Include="SAMP\API\Pools.cpp" />
+    <ClCompile Include="GTA\API\CPed.cpp" />
+    <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="RakHook.cpp" />
+    <ClCompile Include="RakNet\BitStream.cpp" />
+    <ClCompile Include="RakNet\DS_HuffmanEncodingTree.cpp" />
+    <ClCompile Include="RakNet\PluginInterface.cpp" />
+    <ClCompile Include="RakNet\StringCompressor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LemonHook\include\lemon\details\details.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\details\detour_base.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\details\detour_callback.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\details\hook_base.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\details\hook_callback.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\detour.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\hook.hpp" />
+    <ClInclude Include="LemonHook\include\lemon\mem.hpp" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="GameLoopHook.h" />
+    <ClInclude Include="DiscordPresence.h" />
+    <ClInclude Include="SAMP\API\Base.h" />
+    <ClInclude Include="SAMP\API\Library.h" />
+    <ClInclude Include="SAMP\API\PlayerPool.h" />
+    <ClInclude Include="SAMP\API\Pools.h" />
+    <ClInclude Include="SAMP\samp.hpp" />
+    <ClInclude Include="GTA\API\CPed.h" />
+    <ClInclude Include="GTA\game.hpp" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="RakHook.h" />
+    <ClInclude Include="RakNet\BitStream.h" />
+    <ClInclude Include="RakNet\DS_HuffmanEncodingTree.h" />
+    <ClInclude Include="RakNet\DS_HuffmanEncodingTreeNode.h" />
+    <ClInclude Include="RakNet\DS_LinkedList.h" />
+    <ClInclude Include="RakNet\DS_List.h" />
+    <ClInclude Include="RakNet\DS_Map.h" />
+    <ClInclude Include="RakNet\DS_OrderedList.h" />
+    <ClInclude Include="RakNet\DS_Queue.h" />
+    <ClInclude Include="RakNet\NetworkTypes.h" />
+    <ClInclude Include="RakNet\PacketEnumerations.h" />
+    <ClInclude Include="RakNet\PacketPriority.h" />
+    <ClInclude Include="RakNet\PluginInterface.h" />
+    <ClInclude Include="RakNet\RakClientInterface.h" />
+    <ClInclude Include="RakNet\StringCompressor.h" />
+    <ClInclude Include="Discord\discord_register.h" />
+    <ClInclude Include="Discord\discord_rpc.h" />
+  </ItemGroup>
+</Project>

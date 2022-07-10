@@ -13,6 +13,7 @@ using PacketsIncomingHandlerPrototype = Packet*( __thiscall* )( void* );
 
 class RakHook
 {
+	static RakHook* self;
 	static constexpr int MAX_ALLOCA_STACK_ALLOCATION{ 1048576 };
 	
 	void* pIncomingRPC{ nullptr };
@@ -20,6 +21,7 @@ class RakHook
 
 	lemon::detour<RPCIncomingHandlerPrototype> incomingRpcHook_{ 0x0 };
 	lemon::detour<PacketsIncomingHandlerPrototype> incomingPacketsHook_{ 0x0 };
+
 public:
 	enum class RPCActions : int
 	{
@@ -34,11 +36,11 @@ public:
 		TRYING_CONNECTION = 1
 	}; // enum class PacketsAction
 
-	RakHook();
-	~RakHook();
-
 	static RPCActions GetRPCAction();
 	static PacketsActions GetPacketsAction();
+
+	RakHook();
+	~RakHook();
 private:
 	unsigned char readPacketId( RakNet::BitStream BitStream );
 

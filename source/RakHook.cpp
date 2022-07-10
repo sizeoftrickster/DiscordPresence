@@ -33,7 +33,7 @@ RakHook::RakHook() {
 			pIncomingPackets = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x31CA0 );
 			break;
 		}
-		/*case (SAMP::sampVersion::R4): {
+		/*case ( SAMP::sampVersion::R4 ): {
 			pIncomingRPC = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x3ADE0 );
 			pIncomingPackets = reinterpret_cast<void*>( SAMP::GetSAMPHandle() + 0x31CA0 );
 			break;

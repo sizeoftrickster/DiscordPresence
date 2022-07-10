@@ -30,23 +30,6 @@ std::string Utility::cp1251ToUTF8( const char* str ) {
     return res;
 }
 
-std::string Utility::utf8ToCp1251( std::string utf8 ) {
-    if (!utf8.empty())
-    {
-        int wchlen = MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), utf8.size(), NULL, 0);
-        if (wchlen > 0 && wchlen != 0xFFFD)
-        {
-            std::vector<wchar_t> wbuf(wchlen);
-            MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), utf8.size(), &wbuf[0], wchlen);
-            std::vector<char> buf(wchlen);
-            WideCharToMultiByte(1251, 0, &wbuf[0], wchlen, &buf[0], wchlen, 0, 0);
-
-            return std::string(&buf[0], wchlen);
-        }
-    }
-    return std::string();
-}
-
 std::filesystem::path Utility::GetCurrentModulePath() {
     wchar_t lpFilename[MAX_PATH];
     GetModuleFileNameW( reinterpret_cast<HMODULE>( &__ImageBase ), lpFilename, MAX_PATH );
@@ -54,5 +37,5 @@ std::filesystem::path Utility::GetCurrentModulePath() {
 }
 
 HMODULE Utility::GetCurrentModule() {
-    return GetModuleHandleA( GetCurrentModulePath().string().data() );
+    return GetModuleHandleA( GetCurrentModulePath().string().c_str() );
 }

@@ -8,9 +8,8 @@
 
 class DiscordPresence 
 {
-	std::unique_ptr<class RakHook> RpcHook_;
+	static DiscordPresence* self;
 
-	std::string applicationId = "988461715178025021";
 	time_t Timestamp = std::time( 0 );
 	
 	std::vector<std::string> ServersIP = {
@@ -57,11 +56,15 @@ class DiscordPresence
 		{ "heatseekingrpg" },   { "flamethrower" },   { "minigun" },        { "satchelcharges" }, { "detonator" },   { "spraycan" },       
 		{ "fireextinguisher" }, { "camera" },         { "nightvision" },    { "thermalgoggles" }, { "parachute" }
 	};
-public:
+	
 	DiscordPresence();
 	~DiscordPresence();
+public:
+	static DiscordPresence* CreateInstance();
 
 	void Update();
+
+	static void DeleteInstance();
 protected:
 	int GetServerIndex( const char* serverAddress );
 	

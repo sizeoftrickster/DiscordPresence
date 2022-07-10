@@ -9,8 +9,6 @@ class GameLoopHook
 {
 	lemon::detour<GameLoopPrototype> gameloopHook_{ 0x748DA3 };
 
-	std::unique_ptr<class DiscordPresence> discordPresence_;
-
 	ULONGLONG UpdateRate = GetTickCount64();
 public:
 	GameLoopHook();
