@@ -15,7 +15,6 @@ void GameLoopHook::GameLoopHooked( GameLoopPrototype fpHkOriginal ) {
 	static bool isInitialized{ false };
 	if ( !isInitialized ) {
 		if ( SAMP::Base::isSAMPInitilize() ) {
-			Config::Load();
 			DiscordPresence::CreateInstance()->Update();
 			isInitialized = true; 
 		}

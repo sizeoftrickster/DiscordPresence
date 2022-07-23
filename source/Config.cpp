@@ -13,18 +13,24 @@ struct Config::ConfigData* Config::Get() {
 void Config::Save() {
 	nlohmann::ordered_json json;
 
+	// Settings
 	json["Settings"]["UpdateRate"] = ConfigData_.UpdateRate;
+	json["Settings"]["EnablePresence"] = ConfigData_.EnablePresence;
 
+	// RichPresence
 	json["RichPresence"]["ApplicationID"] = ConfigData_.ApplicationID;
+	json["RichPresence"]["EnableShowingTimestamp"] = ConfigData_.EnableShowingTimestamp;
 	json["RichPresence"]["EnableShowingActions"] = ConfigData_.EnableShowingActions;
 	json["RichPresence"]["EnableShowingGuns"] = ConfigData_.EnableShowingGuns;
 	json["RichPresence"]["EnableShowingFirstButton"] = ConfigData_.EnableShowingFirstButton;
+	json["RichPresence"]["EnableShowingSecondButton"] = ConfigData_.EnableShowingSecondButton;
 	json["RichPresence"]["FirstButtonText"] = ConfigData_.FirstButtonText;
 	json["RichPresence"]["FirstButtonURL"] = ConfigData_.FirstButtonURL;
-	json["RichPresence"]["EnableShowingSecondButton"] = ConfigData_.EnableShowingSecondButton;
 	json["RichPresence"]["SecondButtonText"] = ConfigData_.SecondButtonText;
 	json["RichPresence"]["SecondButtonURL"] = ConfigData_.SecondButtonURL;
 
+	// ServerLogoNames
+	json["ServerLogoNames"]["Default"] = ConfigData_.Default;
 	json["ServerLogoNames"]["ArizonaRP"] = ConfigData_.ArizonaRP;
 	json["ServerLogoNames"]["SAMPRP"] = ConfigData_.SAMPRP;
 	json["ServerLogoNames"]["EvolveRP"] = ConfigData_.EvolveRP;
@@ -35,10 +41,12 @@ void Config::Save() {
 	json["ServerLogoNames"]["HackMySoftware"] = ConfigData_.HMS;
 	json["ServerLogoNames"]["SR_team"] = ConfigData_.SRT;
 
+	// MainActions
 	json["MainActionsText"]["DisabledActionsText"] = ConfigData_.DisabledActionsText;
 	json["MainActionsText"]["DoesNothing"] = ConfigData_.DoesNothing;
 	json["MainActionsText"]["Running"] = ConfigData_.Running;
 
+	// Actions
 	json["ActionsText"]["TryingConnection"] = ConfigData_.TryingConnection;
 	json["ActionsText"]["ShowDialog"] = ConfigData_.ShowDialog;
 	json["ActionsText"]["ShowGameText"] = ConfigData_.ShowGameText;
@@ -66,18 +74,24 @@ void Config::Load() {
 		std::string content = std::string( ( std::istreambuf_iterator<char>( config ) ), std::istreambuf_iterator<char>() );
 		auto json = nlohmann::json::parse( content );
 		
+		// Settings
 		json["Settings"]["UpdateRate"].get_to<int>( ConfigData_.UpdateRate );
+		json["Settings"]["EnablePresence"].get_to<bool>( ConfigData_.EnablePresence );
 
+		// RichPresence
 		json["RichPresence"]["ApplicationID"].get_to<std::string>( ConfigData_.ApplicationID );
+		json["RichPresence"]["EnableShowingTimestamp"].get_to<bool>( ConfigData_.EnableShowingTimestamp );
 		json["RichPresence"]["EnableShowingActions"].get_to<bool>( ConfigData_.EnableShowingActions );
 		json["RichPresence"]["EnableShowingGuns"].get_to<bool>( ConfigData_.EnableShowingGuns );
 		json["RichPresence"]["EnableShowingFirstButton"].get_to<bool>( ConfigData_.EnableShowingFirstButton );
+		json["RichPresence"]["EnableShowingSecondButton"].get_to<bool>( ConfigData_.EnableShowingSecondButton );
 		json["RichPresence"]["FirstButtonText"].get_to<std::string>( ConfigData_.FirstButtonText );
 		json["RichPresence"]["FirstButtonURL"].get_to<std::string>( ConfigData_.FirstButtonURL );
-		json["RichPresence"]["EnableShowingSecondButton"].get_to<bool>( ConfigData_.EnableShowingSecondButton );
 		json["RichPresence"]["SecondButtonText"].get_to<std::string>( ConfigData_.SecondButtonText );
 		json["RichPresence"]["SecondButtonURL"].get_to<std::string>( ConfigData_.SecondButtonURL );
 
+		// ServerLogoNames
+		json["ServerLogoNames"]["Default"].get_to<std::string>( ConfigData_.Default );
 		json["ServerLogoNames"]["ArizonaRP"].get_to<std::string>( ConfigData_.ArizonaRP );
 		json["ServerLogoNames"]["SAMPRP"].get_to<std::string>( ConfigData_.SAMPRP );
 		json["ServerLogoNames"]["EvolveRP"].get_to<std::string>( ConfigData_.EvolveRP );
@@ -88,10 +102,12 @@ void Config::Load() {
 		json["ServerLogoNames"]["HackMySoftware"].get_to<std::string>( ConfigData_.HMS );
 		json["ServerLogoNames"]["SR_team"].get_to<std::string>( ConfigData_.SRT );
 
+		// MainActions
 		json["MainActionsText"]["DisabledActionsText"].get_to<std::string>( ConfigData_.DisabledActionsText );
 		json["MainActionsText"]["DoesNothing"].get_to<std::string>( ConfigData_.DoesNothing );
 		json["MainActionsText"]["Running"].get_to<std::string>( ConfigData_.Running );
 
+		// Actions
 		json["ActionsText"]["TryingConnection"].get_to<std::string>( ConfigData_.TryingConnection );
 		json["ActionsText"]["ShowDialog"].get_to<std::string>( ConfigData_.ShowDialog );
 		json["ActionsText"]["ShowGameText"].get_to<std::string>( ConfigData_.ShowGameText );

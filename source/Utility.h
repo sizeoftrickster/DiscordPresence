@@ -9,10 +9,12 @@
 class Utility
 {
 public:
-	static std::string cp1251ToUTF8( const char* str );
+	static std::string Win1251ToUTF8( std::string string );
 
 	static std::filesystem::path GetCurrentModulePath();
 	static HMODULE GetCurrentModule();
+private:
+	static void Win1251ToUTF1( char* out, const char* in );
 };
 
 #endif // !_UTILITY_H_

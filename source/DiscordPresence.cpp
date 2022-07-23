@@ -61,7 +61,8 @@ void DiscordPresence::Update() {
 		richPresence.button2_url = Config::Get()->SecondButtonURL.c_str();
 	}
 	// Time //
-	richPresence.startTimestamp = Timestamp;
+	if ( Config::Get()->EnableShowingTimestamp )
+		richPresence.startTimestamp = Timestamp;
 
 	Discord_UpdatePresence( &richPresence );
 }
@@ -160,7 +161,7 @@ const char* DiscordPresence::GetPlayerState() {
 const char* DiscordPresence::GetPlayerDetails() {
 	char* buffer = new char[128];
 	auto playerPool = SAMP::Base::CreateInstance()->Pools()->PlayerPool();
-	sprintf( buffer, "%s[%d]", Utility::cp1251ToUTF8( playerPool->GetLocalPlayerNickname().data() ).data(), playerPool->GetLocalPlayerId() );
+	sprintf( buffer, "%s[%d]", Utility::Win1251ToUTF8( playerPool->GetLocalPlayerNickname().data() ).data(), playerPool->GetLocalPlayerId() );
 	return buffer;
 }
 
@@ -187,7 +188,7 @@ const char* DiscordPresence::GetServerLogo( int serverIndex ) {
 }
 const char* DiscordPresence::GetServerInfo() {
 	char* buffer = new char[128];
-	sprintf( buffer, "%s", Utility::cp1251ToUTF8( SAMP::Base::CreateInstance()->GetHostname() ).data() );
+	sprintf( buffer, "%s", Utility::Win1251ToUTF8( SAMP::Base::CreateInstance()->GetHostname() ).c_str() );
 	return buffer;
 }
 

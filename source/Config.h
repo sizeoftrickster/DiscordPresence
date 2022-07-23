@@ -11,16 +11,22 @@ public:
 	{
 		// Settings
 		int UpdateRate = 2000;
+		bool EnablePresence = true;
 
 		// RichPresence
 		std::string ApplicationID = "988461715178025021";
+
+		bool EnableShowingTimestamp = true;
+
 		bool EnableShowingActions = true;
 		bool EnableShowingGuns = true;
+		
 		bool EnableShowingFirstButton = true;
+		bool EnableShowingSecondButton = true;
+		
 		std::string FirstButtonText = u8"Прикольный хукер";
 		std::string FirstButtonURL = "https://www.blast.hk/threads/101004/";
-		bool EnableShowingSecondButton = true;
-		std::string SecondButtonText = u8"Лучший биндер SnailMatic";
+		std::string SecondButtonText = u8"Лучший биндер";
 		std::string SecondButtonURL = "https://www.blast.hk/threads/102157/";
 
 		// ServerLogoNames
